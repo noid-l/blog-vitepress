@@ -1,73 +1,77 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from "vue";
 
 declare global {
   interface Window {
     PagefindUI?: new (options: {
-      element: HTMLElement
-      showImages?: boolean
-      showSubResults?: boolean
-      resetStyles?: boolean
-      translations?: Record<string, string>
-    }) => unknown
+      element: HTMLElement;
+      showImages?: boolean;
+      showSubResults?: boolean;
+      resetStyles?: boolean;
+      translations?: Record<string, string>;
+    }) => unknown;
   }
 }
 
-const container = ref<HTMLElement | null>(null)
-const status = ref<'idle' | 'ready' | 'unsupported' | 'error'>('idle')
-const errorMessage = ref('')
+const container = ref<HTMLElement | null>(null);
+const status = ref<"idle" | "ready" | "unsupported" | "error">("idle");
+const errorMessage = ref("");
 
 function ensureStylesheet(href: string) {
-  if (document.querySelector(`link[href="${href}"]`)) return
+  if (document.querySelector(`link[href="${href}"]`)) return;
 
-  const link = document.createElement('link')
-  link.rel = 'stylesheet'
-  link.href = href
-  document.head.append(link)
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = href;
+  document.head.append(link);
 }
 
 function loadScript(src: string) {
   return new Promise<void>((resolve, reject) => {
-    const existing = document.querySelector<HTMLScriptElement>(`script[src="${src}"]`)
+    const existing = document.querySelector<HTMLScriptElement>(`script[src="${src}"]`);
     if (existing) {
-      if (existing.dataset.loaded === 'true') {
-        resolve()
-        return
+      if (existing.dataset.loaded === "true") {
+        resolve();
+        return;
       }
 
-      existing.addEventListener('load', () => resolve(), { once: true })
-      existing.addEventListener('error', () => reject(new Error(`Failed to load ${src}`)), { once: true })
-      return
+      existing.addEventListener("load", () => resolve(), { once: true });
+      existing.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), {
+        once: true,
+      });
+      return;
     }
 
-    const script = document.createElement('script')
-    script.src = src
-    script.async = true
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
     script.addEventListener(
-      'load',
+      "load",
       () => {
-        script.dataset.loaded = 'true'
-        resolve()
+        script.dataset.loaded = "true";
+        resolve();
       },
-      { once: true }
-    )
-    script.addEventListener('error', () => reject(new Error(`Failed to load ${src}`)), { once: true })
-    document.body.append(script)
-  })
+      { once: true },
+    );
+    script.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), {
+      once: true,
+    });
+    document.body.append(script);
+  });
 }
 
 onMounted(async () => {
   if (import.meta.env.DEV) {
-    status.value = 'unsupported'
-    return
+    status.value = "unsupported";
+    return;
   }
 
   try {
-    ensureStylesheet('/pagefind/pagefind-ui.css')
-    await loadScript('/pagefind/pagefind-ui.js')
+    ensureStylesheet("/pagefind/pagefind-ui.css");
+    await loadScript("/pagefind/pagefind-ui.js");
 
     if (!container.value || !window.PagefindUI) {
-      throw new Error('Pagefind UI runtime unavailable')
+      throw new Error("Pagefind UI runtime unavailable");
     }
 
     new window.PagefindUI({
@@ -76,16 +80,16 @@ onMounted(async () => {
       showSubResults: true,
       resetStyles: false,
       translations: {
-        placeholder: '搜索文章内容、标题或标签'
-      }
-    })
+        placeholder: "搜索文章内容、标题或标签",
+      },
+    });
 
-    status.value = 'ready'
+    status.value = "ready";
   } catch (error) {
-    status.value = 'error'
-    errorMessage.value = error instanceof Error ? error.message : '未知错误'
+    status.value = "error";
+    errorMessage.value = error instanceof Error ? error.message : "未知错误";
   }
-})
+});
 </script>
 
 <template>

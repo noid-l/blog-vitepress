@@ -12,6 +12,7 @@
 - 其他文件 → 使用 `bat`
 
 但当输入是 heredoc 或 stdin 时（如 `cat <<'EOF'`），`batp` 会尝试使用 `chafa` 处理，导致：
+
 1. `chafa` 输出错误：`Failed to open '-': Unknown file format`
 2. `chafa` 输出光标控制序列：`\x1b[?25l\x1b[?25h`（隐藏/显示光标）
 3. 这些序列被捕获到 commit message 中

@@ -16,12 +16,14 @@
 ## 技术栈
 
 ### 核心技术
+
 - **构建框架**: VitePress 2.0.0-alpha.17 - 基于 Vite 的静态站点生成器
 - **CSS 框架**: Tailwind CSS 4.2.2 - 实用优先的 CSS 框架
 - **开发语言**: TypeScript - 严格模式，完整类型安全
 - **包管理器**: Bun - 快速的 JavaScript 运行时和包管理器
 
 ### 主要依赖
+
 - **pagefind** 1.4.0 - 静态全文搜索引擎
 - **rss** 1.2.2 - RSS feed 生成
 - **satori** 0.26.0 + **@resvg/resvg-js** 2.6.2 - Open Graph 图片生成
@@ -29,6 +31,7 @@
 - **gray-matter** 4.0.3 - Markdown frontmatter 解析
 
 ### 开发工具
+
 - **ESLint** 10.1.0 + TypeScript 插件 - 代码质量检查
 - **Prettier** 3.8.1 - 代码格式化
 - **TypeScript** - 严格模式类型检查
@@ -68,18 +71,21 @@
 ## 功能特性
 
 ### 内容管理
+
 - Markdown 文章编写，支持 frontmatter 元数据
 - 自动文章列表和归档
 - 标签分类系统
 - 文章草稿功能
 
 ### 主题和样式
+
 - Warm Editorial 设计风格
 - 自定义颜色系统，支持明暗主题
 - 优化的字体系统（Playfair Display + 系统字体）
 - Tailwind CSS 4 集成
 
 ### SEO 优化
+
 - 自动生成 Open Graph 图片
 - JSON-LD 结构化数据
 - Twitter Card 支持
@@ -87,11 +93,13 @@
 - Sitemap 自动生成
 
 ### 搜索功能
+
 - Pagefind 静态全文搜索
 - 快速、轻量的搜索体验
 - 无需后端服务
 
 ### 性能优化
+
 - DNS 预解析和预连接
 - 延迟加载 Google Analytics
 - 资源预加载
@@ -100,6 +108,7 @@
 ## 快速开始
 
 ### 环境要求
+
 - Node.js 18+ 或 Bun
 - pnpm、npm 或 bun 包管理器
 
@@ -181,15 +190,15 @@ draft: false
 
 ### Frontmatter 字段说明
 
-| 字段 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| title | string | 是 | 文章标题 |
-| date | string | 是 | 发布日期 (YYYY-MM-DD) |
-| tags | string[] | 否 | 标签列表 |
-| description | string | 否 | 文章描述 |
-| cover | string | 否 | 封面图片路径 |
-| category | string | 否 | 文章分类 |
-| draft | boolean | 否 | 是否为草稿（默认 false） |
+| 字段        | 类型     | 必填 | 说明                     |
+| ----------- | -------- | ---- | ------------------------ |
+| title       | string   | 是   | 文章标题                 |
+| date        | string   | 是   | 发布日期 (YYYY-MM-DD)    |
+| tags        | string[] | 否   | 标签列表                 |
+| description | string   | 否   | 文章描述                 |
+| cover       | string   | 否   | 封面图片路径             |
+| category    | string   | 否   | 文章分类                 |
+| draft       | boolean  | 否   | 是否为草稿（默认 false） |
 
 ## 部署
 
@@ -204,6 +213,7 @@ draft: false
 ### 其他平台
 
 构建产物是纯静态文件，可部署到任何静态托管平台：
+
 - Vercel
 - Netlify
 - GitHub Pages
@@ -212,24 +222,28 @@ draft: false
 ## 项目亮点
 
 ### AI 友好
+
 - 纯文本 Markdown 内容管理
 - 稳定、清晰的文件结构
 - 适合 AI 批量修改和维护
 - 短发布链路
 
 ### 类型安全
+
 - 严格的 TypeScript 配置
 - Zod 运行时验证
 - 消除不安全的类型断言
 - 完整的类型推导
 
 ### 开发体验
+
 - ESLint + Prettier 代码规范
 - 类型检查脚本
 - 清理脚本
 - Vue Composables 复用逻辑
 
 ### 性能优化
+
 - 静态生成，无需服务器渲染
 - 搜索索引预构建
 - 资源优化加载

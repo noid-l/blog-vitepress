@@ -1,13 +1,13 @@
 <script setup lang="ts">
 defineProps<{
-  title: string
-  url: string
-  date: string
-  description?: string
-  tags?: string[]
-  readingTime?: number
-  category?: string
-}>()
+  title: string;
+  url: string;
+  date: string;
+  description?: string;
+  tags?: string[];
+  readingTime?: number;
+  category?: string;
+}>();
 </script>
 
 <template>

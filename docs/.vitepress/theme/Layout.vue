@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import DefaultTheme from 'vitepress/theme'
-import { useRoute } from 'vitepress'
-import { computed } from 'vue'
-import NotFound from './components/NotFound.vue'
-import PostNav from './components/PostNav.vue'
-import PostFooter from './components/PostFooter.vue'
-import ShareButtons from './components/ShareButtons.vue'
-import BackToTop from './components/BackToTop.vue'
+import DefaultTheme from "vitepress/theme";
+import { useRoute } from "vitepress";
+import { computed } from "vue";
+import NotFound from "./components/NotFound.vue";
+import PostNav from "./components/PostNav.vue";
+import PostFooter from "./components/PostFooter.vue";
+import ShareButtons from "./components/ShareButtons.vue";
+import BackToTop from "./components/BackToTop.vue";
 
-const route = useRoute()
-const isPostPage = computed(() =>
-  route.path.startsWith('/posts/') &&
-  route.path !== '/posts/' &&
-  route.path !== '/posts'
-)
+const route = useRoute();
+const isPostPage = computed(
+  () => route.path.startsWith("/posts/") && route.path !== "/posts/" && route.path !== "/posts",
+);
 </script>
 
 <template>

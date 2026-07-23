@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { usePosts } from '../composables/usePosts'
+import { usePosts } from "../composables/usePosts";
 
-const { featuredPost, archivePosts } = usePosts()
+const { featuredPost, archivePosts } = usePosts();
 </script>
 
 <template>
@@ -16,7 +16,12 @@ const { featuredPost, archivePosts } = usePosts()
 
       <a :href="featuredPost.url" class="posts-lead-card mt-6">
         <div class="posts-lead-copy">
-          <p class="posts-lead-meta">{{ featuredPost.category || 'Latest' }} · {{ featuredPost.date }}<template v-if="featuredPost.readingTime"> · {{ featuredPost.readingTime }} 分钟</template></p>
+          <p class="posts-lead-meta">
+            {{ featuredPost.category || "Latest" }} · {{ featuredPost.date
+            }}<template v-if="featuredPost.readingTime">
+              · {{ featuredPost.readingTime }} 分钟</template
+            >
+          </p>
           <h2 class="posts-lead-title">{{ featuredPost.title }}</h2>
           <p v-if="featuredPost.description" class="posts-lead-desc">
             {{ featuredPost.description }}

@@ -17,9 +17,11 @@
   --border: #e7e5e4;
   --border-strong: #d6d3d1;
 
-  --font-display: 'Playfair Display', 'Songti SC', 'SimSun', Georgia, 'Times New Roman', serif;
-  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+  --font-display: "Playfair Display", "Songti SC", "SimSun", Georgia, "Times New Roman", serif;
+  --font-body:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
 
   --shadow-xs: 0 1px 2px rgba(28, 25, 23, 0.03);
   --shadow-sm: 0 1px 3px rgba(28, 25, 23, 0.05), 0 1px 2px rgba(28, 25, 23, 0.03);
@@ -204,7 +206,9 @@
 }
 
 .VPHero .action-link {
-  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out);
 }
 
 .VPHero .action-link:hover {
@@ -238,7 +242,7 @@
 }
 
 .post-card::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -296,11 +300,13 @@
   box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.35s var(--ease-out), border-color 0.35s ease;
+  transition:
+    box-shadow 0.35s var(--ease-out),
+    border-color 0.35s ease;
 }
 
 .hero-box::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -420,7 +426,7 @@
 }
 
 .posts-hero::after {
-  content: '';
+  content: "";
   position: absolute;
   right: clamp(-1rem, -3vw, -2.5rem);
   top: clamp(0.5rem, 2vw, 1.25rem);
@@ -428,8 +434,16 @@
   height: clamp(7rem, 18vw, 12rem);
   border-radius: 999px;
   background:
-    radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 26%, transparent) 0%, transparent 58%),
-    radial-gradient(circle at 70% 70%, color-mix(in srgb, var(--accent) 14%, transparent) 0%, transparent 68%);
+    radial-gradient(
+      circle at 30% 30%,
+      color-mix(in srgb, var(--accent) 26%, transparent) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      color-mix(in srgb, var(--accent) 14%, transparent) 0%,
+      transparent 68%
+    );
   pointer-events: none;
   opacity: 0.85;
 }
@@ -450,8 +464,11 @@
   padding: 1.5rem;
   border-radius: 1.5rem;
   border: 1px solid color-mix(in srgb, var(--accent) 16%, var(--border));
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--bg-soft) 82%, var(--bg-base)) 0%, var(--bg-base) 100%);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--bg-soft) 82%, var(--bg-base)) 0%,
+    var(--bg-base) 100%
+  );
   box-shadow: var(--shadow-sm);
   text-decoration: none !important;
   transition:
@@ -602,8 +619,12 @@
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .hero-box {
@@ -614,25 +635,53 @@
   animation: fade-up 0.5s var(--ease-out) both;
 }
 
-.home-grid .post-card:nth-child(1) { animation-delay: 0.05s; }
-.home-grid .post-card:nth-child(2) { animation-delay: 0.1s; }
-.home-grid .post-card:nth-child(3) { animation-delay: 0.15s; }
-.home-grid .post-card:nth-child(4) { animation-delay: 0.2s; }
-.home-grid .post-card:nth-child(5) { animation-delay: 0.25s; }
-.home-grid .post-card:nth-child(6) { animation-delay: 0.3s; }
+.home-grid .post-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.home-grid .post-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.home-grid .post-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.home-grid .post-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.home-grid .post-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.home-grid .post-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
 
 .posts-grid .post-card {
   animation: fade-up 0.5s var(--ease-out) both;
 }
 
-.posts-grid .post-card:nth-child(1) { animation-delay: 0.05s; }
-.posts-grid .post-card:nth-child(2) { animation-delay: 0.1s; }
-.posts-grid .post-card:nth-child(3) { animation-delay: 0.15s; }
-.posts-grid .post-card:nth-child(4) { animation-delay: 0.2s; }
-.posts-grid .post-card:nth-child(5) { animation-delay: 0.25s; }
-.posts-grid .post-card:nth-child(6) { animation-delay: 0.3s; }
-.posts-grid .post-card:nth-child(7) { animation-delay: 0.35s; }
-.posts-grid .post-card:nth-child(8) { animation-delay: 0.4s; }
+.posts-grid .post-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.posts-grid .post-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.posts-grid .post-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.posts-grid .post-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.posts-grid .post-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.posts-grid .post-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.posts-grid .post-card:nth-child(7) {
+  animation-delay: 0.35s;
+}
+.posts-grid .post-card:nth-child(8) {
+  animation-delay: 0.4s;
+}
 
 .feature-panel,
 .stats-grid,

@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { data as posts } from '../../data/posts.data'
-import { useRoute } from 'vitepress'
-import { computed } from 'vue'
+import { data as posts } from "../../data/posts.data";
+import { useRoute } from "vitepress";
+import { computed } from "vue";
 
-const route = useRoute()
+const route = useRoute();
 
 const currentIndex = computed(() => {
   return posts.findIndex((p) => {
-    const postPath = p.url.replace(/\.html$/, '').replace(/\/$/, '')
-    const routePath = route.path.replace(/\/$/, '')
-    return postPath === routePath
-  })
-})
+    const postPath = p.url.replace(/\.html$/, "").replace(/\/$/, "");
+    const routePath = route.path.replace(/\/$/, "");
+    return postPath === routePath;
+  });
+});
 
 const prevPost = computed(() =>
-  currentIndex.value >= 0 ? posts[currentIndex.value + 1] : undefined
-)
+  currentIndex.value >= 0 ? posts[currentIndex.value + 1] : undefined,
+);
 const nextPost = computed(() =>
-  currentIndex.value > 0 ? posts[currentIndex.value - 1] : undefined
-)
+  currentIndex.value > 0 ? posts[currentIndex.value - 1] : undefined,
+);
 </script>
 
 <template>
