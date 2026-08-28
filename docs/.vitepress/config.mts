@@ -2,9 +2,7 @@ import { defineConfig, type HeadConfig } from "vitepress";
 import tailwindcss from "@tailwindcss/vite";
 import { generateRSS } from "./rss";
 import { generatePagefind } from "./pagefind";
-import { generateOG } from "./og";
 import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION, GA_ID } from "./site";
-import { parse } from "node:path";
 import { rmSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -24,20 +22,18 @@ function cleanDist() {
   }
 }
 
-// 自定义 Vite 插件，在构建开始前执行清理和 OG 生成
+// 自定义 Vite 插件，在构建开始前清理构建产物
 let buildStartExecuted = false;
 function buildStartPlugin(): Plugin {
   return {
     name: "vitepress-build-start",
-    async buildStart() {
+    buildStart() {
       // 防止重复执行（VitePress 会调用两次 buildStart）
       if (buildStartExecuted) return;
       buildStartExecuted = true;
 
       // 清理旧的构建产物
       cleanDist();
-      // 生成 OG 图片
-      await generateOG();
     },
   };
 }
@@ -123,26 +119,22 @@ export default defineConfig({
 
     // 文章页：/posts/xxxx.md
     if (relativePath.startsWith("posts/") && !relativePath.endsWith("index.md")) {
-      const slug = parse(relativePath).name;
-
       head.push(["meta", { property: "og:title", content: fm.title ?? SITE_TITLE }]);
       head.push([
         "meta",
         { property: "og:description", content: fm.description ?? SITE_DESCRIPTION },
       ]);
-      head.push(["meta", { property: "og:image", content: `${SITE_URL}/og/${slug}.png` }]);
       head.push(["meta", { property: "og:type", content: "article" }]);
       head.push([
         "meta",
         { property: "og:url", content: `${SITE_URL}/${relativePath.replace(/\.md$/, "")}` },
       ]);
-      head.push(["meta", { name: "twitter:card", content: "summary_large_image" }]);
+      head.push(["meta", { name: "twitter:card", content: "summary" }]);
       head.push(["meta", { name: "twitter:title", content: fm.title ?? SITE_TITLE }]);
       head.push([
         "meta",
         { name: "twitter:description", content: fm.description ?? SITE_DESCRIPTION },
       ]);
-      head.push(["meta", { name: "twitter:image", content: `${SITE_URL}/og/${slug}.png` }]);
 
       // 添加结构化数据（JSON-LD）
       const structuredData = {
@@ -168,15 +160,11 @@ export default defineConfig({
             url: `${SITE_URL}/favicon.ico`,
           },
         },
-        image: `${SITE_URL}/og/${slug}.png`,
       };
 
       head.push(["script", { type: "application/ld+json" }, JSON.stringify(structuredData)]);
     } else {
-      // 非文章页使用默认 OG 图
-      head.push(["meta", { property: "og:image", content: `${SITE_URL}/og/default.png` }]);
-      head.push(["meta", { name: "twitter:card", content: "summary_large_image" }]);
-      head.push(["meta", { name: "twitter:image", content: `${SITE_URL}/og/default.png` }]);
+      head.push(["meta", { name: "twitter:card", content: "summary" }]);
     }
 
     return head;

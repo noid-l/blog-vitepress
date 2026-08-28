@@ -17,8 +17,6 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "devDependencies": {
-    "@fontsource/noto-sans-sc": "^5.2.9",
-    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.2.4",
     "@types/node": "^26.4.0",
     "@types/rss": "^0.0.32",
@@ -28,7 +26,6 @@
     "oxlint": "^1.80.0",
     "pagefind": "^1.5.2",
     "rss": "^1.2.2",
-    "satori": "^0.33.4",
     "tailwindcss": "^4.2.4",
     "typescript": "^5.9.3",
     "vitepress": "2.0.0-alpha.19",
