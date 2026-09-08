@@ -4,15 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-个人博客站点的 VitePress 实现，域名 www.myls.top。这是 monorepo 中的生产部署版本，文章源来自同仓库的 `blog-content/`（通过 git submodule + `scripts/copy-content.mjs` 同步到 `docs/posts/`）。
+个人博客站点的 VitePress 实现，域名 www.myls.top。文章直接在 `docs/posts/` 维护。
 
 技术栈：VitePress 2.0.0-alpha.18 + Tailwind CSS 4.2.4 + Vue 3 + Oxlint + Oxfmt + vue-tsc。
 
 ## Commands
 
 ```bash
-bun run dev           # 开发服务器（先 sync-content，localhost:5173）
-bun run build         # 完整构建（sync-content → 清理 → OG → VitePress → RSS → Pagefind）
+bun run dev           # 开发服务器（localhost:5173）
+bun run build         # 完整构建（清理 → OG → VitePress → RSS → Pagefind）
 bun run preview       # 预览构建产物
 bun run clean         # 清理构建产物
 bun run typecheck     # vue-tsc 类型检查（含 .vue 模板类型）
@@ -43,7 +43,7 @@ docs/
 │           ├── HomePosts.vue      # 首页文章列表（取前6篇）
 │           ├── PostCard.vue       # 文章卡片（用于列表/标签页）
 │           └── PagefindSearch.vue # Pagefind 搜索 UI 封装
-├── posts/                  # 从 blog-content 同步的文章（不要直接编辑）
+├── posts/                  # 博客文章（直接在此维护）
 ├── index.md                # 首页
 ├── tags.md                 # 标签聚合页
 ├── search.md               # 搜索页
@@ -66,9 +66,7 @@ docs/
 
 ## Adding a New Post
 
-**不要在 `docs/posts/` 中直接创建文章** — 该目录内容由 `blog-content/` git submodule 同步生成。
-
-在 `blog-content/posts/` 下创建 `YYYY-MM-DD-slug.md`，frontmatter 模板：
+在 `docs/posts/` 下创建 `YYYY-MM-DD-slug.md`，frontmatter 模板：
 
 ```yaml
 ---
@@ -80,8 +78,6 @@ tags:
 description: 文章摘要
 ---
 ```
-
-然后提交到 `blog-content/` 仓库，消费仓库通过 `npm run sync-content` 拉取更新。
 
 ## Key Dependencies
 
