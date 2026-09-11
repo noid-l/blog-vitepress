@@ -6,13 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 个人博客站点的 VitePress 实现，域名 www.myls.top。文章直接在 `docs/posts/` 维护。
 
-技术栈：VitePress 2.0.0-alpha.18 + Tailwind CSS 4.2.4 + Vue 3 + Oxlint + Oxfmt + vue-tsc。
+技术栈：VitePress 2.0.0-alpha.20 + Tailwind CSS 4.3.3 + Vue 3 + Oxlint + Oxfmt + vue-tsc。
 
 ## Commands
 
 ```bash
 bun run dev           # 开发服务器（localhost:5173）
-bun run build         # 完整构建（清理 → OG → VitePress → RSS → Pagefind）
+bun run build         # 完整构建（清理 → VitePress → RSS → Pagefind）
 bun run preview       # 预览构建产物
 bun run clean         # 清理构建产物
 bun run typecheck     # vue-tsc 类型检查（含 .vue 模板类型）
@@ -22,7 +22,7 @@ bun run format        # Oxfmt 格式化全部代码
 bun run format:check  # Oxfmt 检查格式（CI 用）
 ```
 
-**注意**: Pagefind 搜索索引和 RSS feed 在 VitePress `buildEnd` 钩子中生成，搜索功能只在 `build` 后的 `preview` 中可用，`dev` 模式下不可用。OG 图片在自定义 Vite 插件的 `buildStart` 钩子中生成。
+**注意**: Pagefind 搜索索引和 RSS feed 在 VitePress `buildEnd` 钩子中生成，搜索功能只在 `build` 后的 `preview` 中可用，`dev` 模式下不可用。
 
 ## Architecture
 
@@ -81,17 +81,16 @@ description: 文章摘要
 
 ## Key Dependencies
 
-- **vitepress**: 2.0.0-alpha.18 — 精确锁定 alpha 版本（内置 Vite 8 + Oxc）
-- **tailwindcss** + **@tailwindcss/vite**: ^4.2.4 — Tailwind v4
+- **vitepress**: 2.0.0-alpha.20 — 精确锁定 alpha 版本（内置 Vite 8 + Oxc）
+- **tailwindcss** + **@tailwindcss/vite**: ^4.3.3 — Tailwind v4
 - **pagefind**: ^1.5.2 — 静态全文搜索
 - **rss**: ^1.2.2 — RSS feed 生成
-- **satori** + **@resvg/resvg-js**: OG 图片生成
-- **zod**: 运行时数据验证
-- **gray-matter**: frontmatter 解析
-- **oxlint**: ^1.75.0 — Rust 代码检查（Vite 8 生态推荐）
-- **oxfmt**: ^0.60.0 — Rust 代码格式化（Vite 8 生态推荐）
-- **vue-tsc**: ^3.3.8 — Vue + TypeScript 类型检查
-- **typescript**: ^5.8 — 锁定 TS 5（vue-tsc 3.x 不兼容 TS 7）
+- **zod**: ^4.6.2 — 运行时数据验证
+- **gray-matter**: ^4.0.3 — frontmatter 解析
+- **oxlint**: ^1.82.0 — Rust 代码检查（Vite 8 生态推荐）
+- **oxfmt**: ^0.67.0 — Rust 代码格式化（Vite 8 生态推荐）
+- **vue-tsc**: ^3.3.11 — Vue + TypeScript 类型检查
+- **typescript**: ^5.9.3 — 锁定 TS 5（vue-tsc 3.x 不兼容 TS 7）
 
 ## Deployment
 

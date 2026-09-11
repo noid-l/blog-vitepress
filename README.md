@@ -2,8 +2,8 @@
 
 > 一个基于 VitePress 和 Tailwind CSS 4 的现代化个人博客系统
 
-[![VitePress](https://img.shields.io/badge/VitePress-2.0.0--alpha.17-blue)](https://vitepress.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.2.2-38B2AC)](https://tailwindcss.com/)
+[![VitePress](https://img.shields.io/badge/VitePress-2.0.0--alpha.20-blue)](https://vitepress.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.3-38B2AC)](https://tailwindcss.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
@@ -17,24 +17,24 @@
 
 ### 核心技术
 
-- **构建框架**: VitePress 2.0.0-alpha.17 - 基于 Vite 的静态站点生成器
-- **CSS 框架**: Tailwind CSS 4.2.2 - 实用优先的 CSS 框架
-- **开发语言**: TypeScript - 严格模式，完整类型安全
+- **构建框架**: VitePress 2.0.0-alpha.20 - 基于 Vite 8 的静态站点生成器
+- **CSS 框架**: Tailwind CSS 4.3.3 - 实用优先的 CSS 框架
+- **开发语言**: TypeScript 5.9.3 - 严格模式，完整类型安全
 - **包管理器**: Bun - 快速的 JavaScript 运行时和包管理器
 
 ### 主要依赖
 
-- **pagefind** 1.4.0 - 静态全文搜索引擎
+- **pagefind** 1.5.2 - 静态全文搜索引擎
 - **rss** 1.2.2 - RSS feed 生成
-- **satori** 0.26.0 + **@resvg/resvg-js** 2.6.2 - Open Graph 图片生成
-- **zod** 4.3.6 - 运行时数据验证
+- **zod** 4.6.2 - 运行时数据验证
 - **gray-matter** 4.0.3 - Markdown frontmatter 解析
 
 ### 开发工具
 
-- **ESLint** 10.1.0 + TypeScript 插件 - 代码质量检查
-- **Prettier** 3.8.1 - 代码格式化
-- **TypeScript** - 严格模式类型检查
+- **Oxlint** 1.82.0 - 高性能 Rust 代码质量检查
+- **Oxfmt** 0.67.0 - 高性能 Rust 代码格式化
+- **vue-tsc** 3.3.11 - Vue + TypeScript 类型检查
+- **TypeScript** 5.9.3 - 严格模式类型检查
 
 ## 项目结构
 
@@ -61,8 +61,7 @@
 │   ├── search.md                # 搜索页
 │   └── about.md                 # 关于页
 ├── scripts/                      # 构建脚本
-│   ├── clean.mjs                # 清理脚本
-│   └── gen-og.mjs               # OG 图片生成
+│   └── clean.mjs                # 清理脚本
 ├── package.json
 ├── tsconfig.json
 └── esa.jsonc                    # ESA 部署配置
@@ -86,7 +85,6 @@
 
 ### SEO 优化
 
-- 自动生成 Open Graph 图片
 - JSON-LD 结构化数据
 - Twitter Card 支持
 - RSS Feed 自动生成
