@@ -91,6 +91,8 @@ description: 文章摘要
 - **oxfmt**: ^0.67.0 — Rust 代码格式化（Vite 8 生态推荐）
 - **vue-tsc**: ^3.3.11 — Vue + TypeScript 类型检查
 - **typescript**: ^5.9.3 — 锁定 TS 5（vue-tsc 3.x 不兼容 TS 7）
+- **mermaid** + **vitepress-plugin-mermaid**: ^11.15.0 / ^2.0.17 — Markdown Mermaid 图表渲染
+- **vitepress-plugin-llms**: ^1.10.0 — 构建期自动生成 llms.txt 和 llms-full.txt
 
 ## Deployment
 

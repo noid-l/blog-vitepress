@@ -26,6 +26,8 @@
 
 - **pagefind** 1.5.2 - 静态全文搜索引擎
 - **rss** 1.2.2 - RSS feed 生成
+- **mermaid** 11.17.2 + **vitepress-plugin-mermaid** 2.0.17 - Markdown Mermaid 图表支持
+- **vitepress-plugin-llms** 1.14.0 - 自动生成 LLM 友好的 Markdown 文档及索引（llms.txt / llms-full.txt）
 - **zod** 4.6.2 - 运行时数据验证
 - **gray-matter** 4.0.3 - Markdown frontmatter 解析
 
